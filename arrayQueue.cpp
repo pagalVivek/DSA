@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>   
 using namespace std;
 
 class Queue
@@ -19,36 +20,48 @@ public:
 
     void push(int data)
     {
+        if( front == -1 && rear == -1){
+            front++;
+            rear++;
+            arr[rear] = data;
+        }
         
-        if (!rear == MAX_SIZE)
+        else if (!rear == MAX_SIZE)
         {
             arr[++rear] = data;
         }
     }
 
-    // void pop(){
-    //     cout << arr[front] << endl;
+    void pop(){
+        cout << arr[front] << endl;
+        front++;
+    }
 
-    // }
-
-    int front()
+    int fron()
     {
+        cout << arr[front] << endl;
     }
     int back()
-    {
+    {  
+        cout << arr[rear] << endl;
     }
 
-    int size()
+    string size()
     {
         if (rear == MAX_SIZE)
-            return rear;
-        return MAX_SIZE - rear;
+            return "Queue is full!";
+        if (rear == -1)
+            return "Queue is empty!";
+        else
+            return to_string(rear);
+
     }
 };
 int main()
 {
     Queue numbers;
 
+    // numbers.size();
     cout << numbers.size() << endl;
 
     return 0;
